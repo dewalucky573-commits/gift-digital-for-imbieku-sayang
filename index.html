@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spesial Buat Kamu ❤️</title>
+    <style>
+        body {
+            background-color: #ffe6e6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 550px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px;
+            border-radius: 25px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        h1 { color: #ff4d6d; font-size: 24px; margin-bottom: 20px; }
+        
+        /* Musik Spotify */
+        .spotify-container {
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* Gaya Tombol Buka-Tutup Foto */
+        .btn-foto {
+            background-color: #ff4d6d;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-foto:hover { background-color: #ff758f; }
+
+        /* Konten Foto yang Tersembunyi */
+        .konten-foto {
+            display: none;
+            background: #fff0f2;
+            padding: 15px;
+            border-radius: 0 0 15px 15px;
+            margin-top: -15px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 4px 6px rgba(0,0,0,0.05);
+        }
+        .konten-foto img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 10px;
+            height: auto;
+        }
+        .caption {
+            font-size: 15px;
+            color: #4a4a4a;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Sistem Password & Surat */
+        .section-surat {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #ffb3c1;
+        }
+        .input-pw {
+            padding: 10px;
+            width: 60%;
+            border: 2px solid #ffb3c1;
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+        }
+        .btn-pw {
+            padding: 10px 15px;
+            background-color: #4cef50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .surat-rahasia {
+            display: none;
+            margin-top: 20px;
+            background-color: #fff0f2;
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 5px solid #ff4d6d;
+            text-align: left;
+            font-size: 16px;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        .hati { font-size: 40px; animation: heartbeat 1.2s infinite; display: inline-block; }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="hati">❤️</div>
+        <h1>Our Secret Place</h1>
+        
+        <!-- BAGIAN 1: MUSIK SPOTIFY (Akad - Payung Teduh) -->
+        <div class="spotify-container">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6g0GzGZ606mZ97WpXorDGl?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+
+        <!-- BAGIAN 2: GALERI FOTO BUKA TUTUP -->
+        <div class="galeri">
+            <!-- FOTO 1 -->
+            <button class="btn-foto" onclick="toggleFoto('foto-1')">📂 Momen Pertama Kita <span>▼</span></button>
+            <div id="foto-1" class="konten-foto">
+                <img src="foto1.jpg" alt="Momen 1">
+                <div class="caption">"Inget nggak pas ini? Hari di mana semuanya dimulai..."</div>
+            </div>
+
+            <!-- FOTO 2 -->
+            <button class="btn-foto" onclick="toggleFoto('foto-2')">📂 Foto Ter-favorit <span>▼</span></button>
+            <div id="foto-2" class="konten-foto">
+                <img src="foto2.jpg" alt="Momen 2">
+                <div class="caption">"Aku suka banget foto ini, kamu kelihatan manis sekaligus lucu!"</div>
+            </div>
+
+            <!-- FOTO 3 -->
+            <button class="btn-foto" onclick="toggleFoto('foto-3')">📂 Saat Paling Seru <span>▼</span></button>
+            <div id="foto-3" class="konten-foto">
+                <img src="foto3.jpg" alt="Momen 3">
+                <div class="caption">"Nanti kita buat lebih banyak momen seru kayak gini lagi ya!"</div>
+            </div>
+        </div>
+
+        <!-- BAGIAN 3: LOCK PASSWORD SURAT -->
+        <div class="section-surat">
+            <h3>🔒 Surat Rahasia Buat Kamu</h3>
+            <p style="font-size: 14px; color: #777;">Masukkan password untuk membuka surat cinta</p>
+            <div id="area-input">
+                <input type="text" id="passwordInput" class="input-pw" placeholder="Ketik password...">
+                <button class="btn-pw" onclick="cekPassword()">Buka</button>
+            </div>
+
+            <!-- Isi Surat yang Terkunci -->
+            <div id="kotakSurat" class="surat-rahasia">
+                <p>happy graduation juga ya imbi sayang💗💗maap yak aku ngucapinnya sekarang tadi juga luntur ucapannya 😢😢aku engga nyangka kamu effort banget kalo sama aku seng Sukak dehh🤗🤗🤭💗😻🥰kamu juga ya semoga nanti disono temen temen aku asik asik kalau misalnya kamu di jakarta sehat sehat ya seng kalo di 14 juga sehat sehat PB juga sehat sehat pokonya sehat sehat deh wkwkwkwk jangan lupain aku ya seng jaga pola makan kamu jangan makan mie Mulu makan yang sehat sehat Ama jangan lupa beribadah seng dimanapun kita berada,aku juga pasti bakal kangen sama kamu seng setiap hari malah aku pikiran kamu mulu💗🤗, intinya makasih ya seng plis sama aku terus kecintaan nih wkwkwkwk😜</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT UNTUK FITUR INTERAKTIF -->
+    <script>
+        // Fungsi Buka Tutup Foto
+        function toggleFoto(id) {
+            var konten = document.getElementById(id);
+            if (konten.style.display === "block") {
+                konten.style.display = "none";
+            } else {
+                konten.style.display = "block";
+            }
+        }
+
+        // Fungsi Cek Password Surat
+        function cekPassword() {
+            var pwBener = "2205"; 
+            var pwUser = document.getElementById("passwordInput").value.trim();
+            
+            if (pwUser === pwBener) {
+                document.getElementById("kotakSurat").style.display = "block";
+                document.getElementById("area-input").style.display = "none";
+                alert("Password benar! Selamat membaca ya sayang ❤️");
+            } else {
+                alert("Ups! Password-nya salah 🤭\n\nPetunjuk: Tanggal jadian kita!");
+            }
+        }
+    </script>
+
+</body>
+</html>
